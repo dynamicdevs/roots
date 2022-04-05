@@ -1,0 +1,75 @@
+stages:
+  - linter
+  - build
+  - deploy
+
+default:
+  image: node:latest
+
+.npm_install: &npm_install |
+  NODE_ENV=build && npm ci && NODE_ENV=production
+
+.cache_npm:
+  cache:
+    untracked: true
+    key: $CI_JOB_NAME
+    paths:
+      - node_modules/
+
+linter:
+  extends:
+    - .cache_npm
+  before_script:
+    - *npm_install
+  stage: linter
+  script:
+    - nx lint $PROJECT_WEBSITE_NAME
+
+build:
+  extends:
+    - .cache_npm
+  before_script:
+    - *npm_install
+  stage: build
+  script:
+    - nx build $PROJECT_WEBSITE_NAME
+  only:
+    - develop
+    - main
+  artifacts:
+    paths:
+      - dist
+
+deploy_develop:
+  stage: deploy
+  image: mcr.microsoft.com/azure-cli:latest
+  dependencies:
+    - build
+  script:
+    - |
+      az login --service-principal \
+        -u $AZURE_APP_ID \
+        -p $AZURE_PASSWORD \
+        -t $AZURE_TENANT
+    - az storage blob delete-batch -s $AZ_STORAGE_CONTAINER_NAME --connection-string $AZ_STORAGE_CONNECTION_STRING
+    - az storage blob upload-batch -d $AZ_STORAGE_CONTAINER_NAME -s dist/apps/$PROJECT_WEBSITE_NAME --connection-string $AZ_STORAGE_CONNECTION_STRING
+    - az cdn endpoint purge -g $CDN_RESOURCE_GROUP -n $CDN_ENDPOINT --profile-name $CDN_PROFILE --content-paths "$AZ_STORAGE_CONTAINER_NAME" --no-wait --subscription $AZURE_SUBSCRIPTION_ID
+  only:
+    - develop
+
+deploy_production:
+  stage: deploy
+  image: mcr.microsoft.com/azure-cli:latest
+  dependencies:
+    - build
+  script:
+    - |
+      az login --service-principal \
+        -u $AZURE_APP_ID \
+        -p $AZURE_PASSWORD \
+        -t $AZURE_TENANT
+    - az storage blob delete-batch -s $AZ_STORAGE_CONTAINER_NAME --connection-string $AZ_STORAGE_CONNECTION_STRING
+    - az storage blob upload-batch -d $AZ_STORAGE_CONTAINER_NAME -s dist/apps/$PROJECT_WEBSITE_NAME --connection-string $AZ_STORAGE_CONNECTION_STRING
+    - az cdn endpoint purge -g DynamicDevs -n $CDN_ENDPOINT --profile-name $CDN_PROFILE --content-paths "$AZ_STORAGE_CONTAINER_NAME" --no-wait --subscription $AZURE_SUBSCRIPTION_ID
+  only:
+    - main
