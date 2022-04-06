@@ -7,7 +7,7 @@ default:
   image: node:latest
 
 .npm_install: &npm_install |
-  NODE_ENV=build && npm ci && NODE_ENV=production
+  NODE_ENV=build && npm ci && NODE_ENV=development
 
 .cache_npm:
   cache:
