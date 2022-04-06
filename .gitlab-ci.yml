@@ -23,7 +23,7 @@ linter:
     - *npm_install
   stage: linter
   script:
-    - nx lint $PROJECT_WEBSITE_NAME
+    - npx nx lint $PROJECT_WEBSITE_NAME
 
 build:
   extends:
@@ -32,7 +32,7 @@ build:
     - *npm_install
   stage: build
   script:
-    - nx build $PROJECT_WEBSITE_NAME
+    - npx nx build $PROJECT_WEBSITE_NAME
   only:
     - develop
     - main
