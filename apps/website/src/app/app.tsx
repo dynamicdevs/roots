@@ -6,6 +6,9 @@ export function App() {
   return (
     <>
       <NxWelcome title="website" />
+      <div className='border-4 border-black flex justify-center'>
+        <h1>Hola soy panda</h1>
+      </div>
       <div />
     </>
   );
