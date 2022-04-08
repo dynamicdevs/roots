@@ -17,6 +17,8 @@ default:
       - node_modules/
 
 linter:
+  tags:
+    - dynamic-devs
   extends:
     - .cache_npm
   before_script:
@@ -26,6 +28,8 @@ linter:
     - npx nx lint $PROJECT_WEBSITE_NAME
 
 build:
+  tags:
+    - dynamic-devs
   extends:
     - .cache_npm
   before_script:
@@ -41,6 +45,8 @@ build:
       - dist
 
 deploy:
+  tags:
+    - dynamic-devs
   environment:
     name: $CI_COMMIT_BRANCH
   stage: deploy
