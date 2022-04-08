@@ -11,6 +11,7 @@
   "dependencies": {
     "@dynamic-devs/symbol-react": "^0.0.3",
     "autoprefixer": "^10.4.4",
+    "contentful": "^9.1.18",
     "core-js": "^3.6.5",
     "postcss": "^8.4.12",
     "react": "17.0.2",
@@ -31,7 +32,7 @@
     "@testing-library/react": "12.1.4",
     "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.0.2",
-    "@types/node": "16.11.7",
+    "@types/node": "^16.11.7",
     "@types/react": "17.0.40",
     "@types/react-dom": "17.0.13",
     "@typescript-eslint/eslint-plugin": "~5.10.0",
