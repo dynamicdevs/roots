@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { client } from '../services/contentfulClient';
 import { LinkTreeType } from '../services/types';
 import { formatData } from '../utils/util';
+import Footer from './elements/organisms/Footer';
+import Layout from './elements/organisms/Layout';
 import { Home } from './page/Home';
 
 export function App() {
@@ -28,7 +30,9 @@ export function App() {
   }
 
   return (    
-    <Home />
+    <Layout>
+      <Home />
+    </Layout>
   );
 }
 

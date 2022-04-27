@@ -1,6 +1,6 @@
 import { SymbolIcon } from "@dynamic-devs/symbol-react"
 import GridWrapper from "../../elements/organisms/GridWrapper"
-import LinkCard from "../../elements/organisms/LinkCard"
+import LinkCard from "../../elements/molecules/LinkCard"
 
 export const Home = () => {
 
