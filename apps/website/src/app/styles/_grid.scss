@@ -2,9 +2,9 @@
   @apply
   grid
   grid-cols-4
-  gap-4
+  gap-x-4
   md:grid-cols-8
-  md:gap-6
+  md:gap-x-6
   lg:grid-cols-12
-  lg:gap-8
+  lg:gap-x-8
 }
