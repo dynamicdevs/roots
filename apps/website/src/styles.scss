@@ -8,3 +8,7 @@
 body {
   @apply font-lato text-primary-neutral-500;
 }
+
+h1, h2, h3 {
+  @apply font-montserrat;
+}
