@@ -12,7 +12,7 @@ const LinkCard:FC<Props> = ({
   text,
   url,
 }) => (
-  <a href={url}>
+  <a href={url} target="_blank" rel="noreferrer">
     <div className="bg-secondary-blue-500 text-primary-dynamic-500 rounded p-4 flex space-x-4">
       <SymbolIcon name={iconName} iconClass="symbol-md" />
       <p className="text-center text-paragraph-04 font-bold text-primary-grey-600 w-full">{text}</p>
