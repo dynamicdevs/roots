@@ -10,6 +10,7 @@
   "private": true,
   "dependencies": {
     "@dynamic-devs/symbol-react": "^0.0.3",
+    "@headlessui/react": "^1.6.1",
     "autoprefixer": "^10.4.4",
     "contentful": "^9.1.18",
     "core-js": "^3.6.5",
@@ -29,6 +30,7 @@
     "@nrwl/react": "13.9.6",
     "@nrwl/web": "13.9.6",
     "@nrwl/workspace": "13.9.6",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@testing-library/react": "12.1.4",
     "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.0.2",
