@@ -9,7 +9,7 @@
   },
   "private": true,
   "dependencies": {
-    "@dynamic-devs/symbol-react": "^0.0.3",
+    "@dynamic-devs/symbol-react": "^0.0.8",
     "@headlessui/react": "^1.6.1",
     "autoprefixer": "^10.4.4",
     "contentful": "^9.1.18",
