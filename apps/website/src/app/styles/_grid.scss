@@ -3,8 +3,15 @@
   grid
   grid-cols-4
   gap-x-4
-  md:grid-cols-8
-  md:gap-x-6
+  md:grid-cols-12
+  md:gap-x-4
   lg:grid-cols-12
+  lg:gap-x-8
+}
+
+.roots-gap {
+  @apply
+  grid
+  gap-x-4
   lg:gap-x-8
 }
