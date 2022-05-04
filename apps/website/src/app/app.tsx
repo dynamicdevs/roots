@@ -1,12 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { SymbolIcon } from '@dynamic-devs/symbol-react';
 import { useEffect, useState } from 'react';
-import { client } from '../services/contentfulClient';
-import { LinkTreeType } from '../services/types';
-import { formatData } from '../utils/util';
-import Footer from './elements/organisms/Footer';
-import Layout from './elements/organisms/Layout';
-import { Home } from './page/Home';
+import { client } from '@services/contentfulClient';
+import { LinkTreeType } from '@services/types';
+import { formatData } from '@utils/util';
+import Layout from '@app/elements/organisms/Layout';
+import { Home } from '@app/page/Home';
 
 export function App() {
 
