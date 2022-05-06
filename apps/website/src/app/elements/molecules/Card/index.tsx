@@ -20,8 +20,8 @@ const Card:FC<Props> = ({
 }) => (
   <a href={url} target="_blank" rel="noreferrer" className={className}>
     <div className="p-2 lg:p-4 rounded shadow-lg flex flex-col space-y-2 bg-primary-grey-600 hover:bg-primary-neutral-100 transition-colors text-left h-full">
-      <div className="rounded w-full">
-        <img src={image.url} alt={image.alt} className="rounded" />
+      <div className="rounded w-full h-32 lg:h-44">
+        <img src={image.url} alt={image.alt} className="rounded object-cover h-full w-full" />
       </div>
       <h3 className="text-heading-08 lg:text-heading-07 font-extrabold font-montserrat text-secondary-blue-500 grow flex items-end line-clamp-2">
         {title}
