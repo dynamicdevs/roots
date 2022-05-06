@@ -18,7 +18,7 @@ export const Home = () => {
     <GridWrapper className="bg-primary-grey-600 pb-4 md:pb-6 lg:pb-8">
       <div className="col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 text-center">
         <p className='text-paragraph-04 md:text-paragraph-03 text-primary-neutral-200'>@dynamicdevs</p>
-        <h1 className="text-heading-06 md:text-heading-05 lg:text-heading-04 font-bold mt-4 md:mt-4 xl:mt-6 line-clamp-1">Dynamic Devs</h1>
+        <h1 className="text-heading-06 md:text-heading-05 lg:text-heading-04 font-bold mt-2 md:mt-4 xl:mt-6 line-clamp-1">Dynamic Devs</h1>
         <p className="text-paragraph-04 md:text-paragraph-03 font-bold mt-2 line-clamp-2">
           Consultoría de desarrollo y tecnología 🖥️
           <br></br>
@@ -28,11 +28,11 @@ export const Home = () => {
       <div className="
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
           flex space-x-6 justify-center text-secondary-blue-400 mt-2 md:mt-4 xl:mt-6 py-2">
-        <Icon name="linkedin" />
-        <Icon name="instagram" />
-        <Icon name="youtube" />
-        <Icon name="spotify" />
-        <Icon name="twitch" />
+            <Icon name="linkedin"  type='outline' />
+            <Icon name="instagram" type='outline' />
+            <Icon name="youtube"  type='outline' />
+            <Icon name="spotify" type='outline' />
+            <Icon name="twitch" type='outline' />
       </div>
       <div className="
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
@@ -46,16 +46,19 @@ export const Home = () => {
           iconName="briefcase"
           text="Trabaja con nosotros"
           url="https://www.getonbrd.com/companies/dynamic-devs"
+          iconType='outline'
         />
         <LinkCard
           iconName="microphone"
           text="Escucha lo último del Podcast"
           url="https://open.spotify.com/show/4fvKHii2mWHkX8mz28klz8?si=d43d25a37ed741c6"
+          iconType='outline'
         />
         <LinkCard
           iconName="speak"
           text="DevTalks: Charlas de innovación"
           url="https://www.twitch.tv/dynamicdevs"
+          iconType='outline'
         />
       </div>
       <div className='
@@ -80,13 +83,13 @@ export const Home = () => {
         </div>
       </div>
       <div className='col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4'>
-        <div className='roots-gap gap-y-4 grid-cols-4 md:grid-cols-10 lg:grid-cols-6'>
+        <div className='roots-gap grid-cols-4 md:grid-cols-10 lg:grid-cols-6 auto-rows-fr'>
           <Card
             image={ { url: CardImage01, alt: 'Imagen de participantes' }}
             title="Cómo Construir y Ser Parte de Equipos Exitosos"
             description="Javiera Tormo y Francisca Carreño"
             caption="Yapo.cl"
-            className='col-span-3 md:col-span-5 lg:col-span-3'
+            className='col-span-4 md:col-span-5 lg:col-span-3'
             url='https://open.spotify.com/episode/7iV6JOlUpCCY2a6v2xYnAD?si=e7f8b18848d24ffb'  
           />
           <Card 
@@ -94,7 +97,7 @@ export const Home = () => {
             title="Blockchain y NFTs: Filosofía, Arte y Tecnología" 
             description="Sergio Borromei" 
             caption="Senior Manager en Mercado Libre"
-            className='col-span-3 md:col-span-5 lg:col-span-3'
+            className='col-span-4 md:col-span-5 lg:col-span-3'
             url='https://open.spotify.com/episode/0nyNTFF1P3JEegOmIFX8TL?si=771363dd89d14e57'  
            /> 
           <Card 
@@ -102,7 +105,7 @@ export const Home = () => {
             title="Mitos y Realidades de los NFTs" 
             description="Rodolfo Finochietti" 
             caption="Qurable"
-            className='col-span-3 md:col-span-5 lg:col-span-3'  
+            className='col-span-4 md:col-span-5 lg:col-span-3'  
             url='https://open.spotify.com/episode/40aVxyl2WHKXFidaskDjTB?si=816d83a514a04be6'  
           />      
         </div>
@@ -115,13 +118,13 @@ export const Home = () => {
           </h2>
       </div>
       <div className='col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4'>
-        <div className='roots-gap gap-y-4 grid-cols-4 md:grid-cols-10 lg:grid-cols-6'>
+        <div className='roots-gap gap-y-4 grid-cols-4 md:grid-cols-10 lg:grid-cols-6 auto-rows-fr'>
           <Card
             image={ { url: CardImage04, alt: 'Imagen de autor' }}
             title="Cultura Ágil: one for me please"
             description="Rosario Zúñiga Soto"
             caption="COO de Dynamic Devs"
-            className='col-span-3 md:col-span-5 lg:col-span-3'
+            className='col-span-4 md:col-span-5 lg:col-span-3'
             url='https://www.linkedin.com/pulse/cultura-%C3%A1gil-one-me-please-rosario-z%C3%BA%C3%B1iga-soto/?trk=articles_directory&originalSubdomain=es'  
           />
           <Card 
@@ -129,7 +132,7 @@ export const Home = () => {
             title="Una conversación acalorada sobre inteligencia artificial y las tecnociencias" 
             description="Marlis Mejías" 
             caption="CMO de Dynamic Devs"
-            className='col-span-3 md:col-span-5 lg:col-span-3'
+            className='col-span-4 md:col-span-5 lg:col-span-3'
             url='https://www.dynamicdevs.io/blog/una-conversacion-acalorada-inteligencia-artificial' 
           />     
         </div>
