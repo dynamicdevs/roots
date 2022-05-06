@@ -9,7 +9,7 @@ const VideoEmbed = ({ url }:Props) => {
   const videoId = getYouTuBeId(url);
 
   return (
-    <div className="relative w-full pt-[56.25%]">
+    <div className="relative w-full aspect-video">
       <iframe 
         src={`https://www.youtube.com/embed/${videoId}`}
         title={`Video ${videoId}`}
