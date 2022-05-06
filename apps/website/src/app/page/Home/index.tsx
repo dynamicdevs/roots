@@ -83,13 +83,13 @@ export const Home = () => {
         </div>
       </div>
       <div className='col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4'>
-        <div className='roots-gap gap-y-4 grid-cols-4 md:grid-cols-10 lg:grid-cols-6'>
+        <div className='roots-gap grid-cols-4 md:grid-cols-10 lg:grid-cols-6 auto-rows-fr'>
           <Card
             image={ { url: CardImage01, alt: 'Imagen de participantes' }}
             title="Cómo Construir y Ser Parte de Equipos Exitosos"
             description="Javiera Tormo y Francisca Carreño"
             caption="Yapo.cl"
-            className='col-span-3 md:col-span-5 lg:col-span-3'
+            className='col-span-4 md:col-span-5 lg:col-span-3'
             url='https://open.spotify.com/episode/7iV6JOlUpCCY2a6v2xYnAD?si=e7f8b18848d24ffb'  
           />
           <Card 
@@ -97,7 +97,7 @@ export const Home = () => {
             title="Blockchain y NFTs: Filosofía, Arte y Tecnología" 
             description="Sergio Borromei" 
             caption="Senior Manager en Mercado Libre"
-            className='col-span-3 md:col-span-5 lg:col-span-3'
+            className='col-span-4 md:col-span-5 lg:col-span-3'
             url='https://open.spotify.com/episode/0nyNTFF1P3JEegOmIFX8TL?si=771363dd89d14e57'  
            /> 
           <Card 
@@ -105,7 +105,7 @@ export const Home = () => {
             title="Mitos y Realidades de los NFTs" 
             description="Rodolfo Finochietti" 
             caption="Qurable"
-            className='col-span-3 md:col-span-5 lg:col-span-3'  
+            className='col-span-4 md:col-span-5 lg:col-span-3'  
             url='https://open.spotify.com/episode/40aVxyl2WHKXFidaskDjTB?si=816d83a514a04be6'  
           />      
         </div>
@@ -118,13 +118,13 @@ export const Home = () => {
           </h2>
       </div>
       <div className='col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4'>
-        <div className='roots-gap gap-y-4 grid-cols-4 md:grid-cols-10 lg:grid-cols-6'>
+        <div className='roots-gap gap-y-4 grid-cols-4 md:grid-cols-10 lg:grid-cols-6 auto-rows-fr'>
           <Card
             image={ { url: CardImage04, alt: 'Imagen de autor' }}
             title="Cultura Ágil: one for me please"
             description="Rosario Zúñiga Soto"
             caption="COO de Dynamic Devs"
-            className='col-span-3 md:col-span-5 lg:col-span-3'
+            className='col-span-4 md:col-span-5 lg:col-span-3'
             url='https://www.linkedin.com/pulse/cultura-%C3%A1gil-one-me-please-rosario-z%C3%BA%C3%B1iga-soto/?trk=articles_directory&originalSubdomain=es'  
           />
           <Card 
@@ -132,7 +132,7 @@ export const Home = () => {
             title="Una conversación acalorada sobre inteligencia artificial y las tecnociencias" 
             description="Marlis Mejías" 
             caption="CMO de Dynamic Devs"
-            className='col-span-3 md:col-span-5 lg:col-span-3'
+            className='col-span-4 md:col-span-5 lg:col-span-3'
             url='https://www.dynamicdevs.io/blog/una-conversacion-acalorada-inteligencia-artificial' 
           />     
         </div>
