@@ -18,7 +18,7 @@ export const Home = () => {
     <GridWrapper className="bg-primary-grey-600 pb-4 md:pb-6 lg:pb-8">
       <div className="col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 text-center">
         <p className='text-paragraph-04 md:text-paragraph-03 text-primary-neutral-200'>@dynamicdevs</p>
-        <h1 className="text-heading-06 md:text-heading-05 lg:text-heading-04 font-bold mt-4 md:mt-4 xl:mt-6 line-clamp-1">Dynamic Devs</h1>
+        <h1 className="text-heading-06 md:text-heading-05 lg:text-heading-04 font-bold mt-2 md:mt-4 xl:mt-6 line-clamp-1">Dynamic Devs</h1>
         <p className="text-paragraph-04 md:text-paragraph-03 font-bold mt-2 line-clamp-2">
           Consultoría de desarrollo y tecnología 🖥️
           <br></br>
@@ -28,11 +28,11 @@ export const Home = () => {
       <div className="
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
           flex space-x-6 justify-center text-secondary-blue-400 mt-2 md:mt-4 xl:mt-6 py-2">
-        <Icon name="linkedin" />
-        <Icon name="instagram" />
-        <Icon name="youtube" />
-        <Icon name="spotify" />
-        <Icon name="twitch" />
+            <Icon name="linkedin"  type='outline' />
+            <Icon name="instagram" type='outline' />
+            <Icon name="youtube"  type='outline' />
+            <Icon name="spotify" type='outline' />
+            <Icon name="twitch" type='outline' />
       </div>
       <div className="
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
@@ -46,16 +46,19 @@ export const Home = () => {
           iconName="briefcase"
           text="Trabaja con nosotros"
           url="https://www.getonbrd.com/companies/dynamic-devs"
+          iconType='outline'
         />
         <LinkCard
           iconName="microphone"
           text="Escucha lo último del Podcast"
           url="https://open.spotify.com/show/4fvKHii2mWHkX8mz28klz8?si=d43d25a37ed741c6"
+          iconType='outline'
         />
         <LinkCard
           iconName="speak"
           text="DevTalks: Charlas de innovación"
           url="https://www.twitch.tv/dynamicdevs"
+          iconType='outline'
         />
       </div>
       <div className='
