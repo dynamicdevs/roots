@@ -18,7 +18,7 @@ const SubscribeBox:FC = () => {
             Recibe notificaciones de nuestras actualizaciones
           </p>
           <div className="flex space-x-2 mt-4">
-            <Input placeholder="E-mail" />
+            <Input placeholder="E-mail" onKeyDown={() => setShowSuccess(true)} />
             <Button onClick={() => setShowSuccess(true)}>Suscribirse</Button>
           </div>
         </div>
@@ -31,7 +31,7 @@ const SubscribeBox:FC = () => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0">
           <div className={`flex flex-col justify-center items-center text-primary-grey-600 h-[104px] lg:h-[136px]`}>
-            <SymbolIcon name="star" iconClass='symbol-xl' type="solid" />
+            <SymbolIcon name="star" iconClass='symbol-xl' type="outline" />
             <h3 className='text-heading-06 font-bold'>¡Gracias por suscribirte!</h3>
           </div> 
         </Transition>
