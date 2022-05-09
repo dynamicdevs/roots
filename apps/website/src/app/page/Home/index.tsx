@@ -11,14 +11,19 @@ import CardImage05 from '@assets/card-image-05.png';
 import SubscribeBox from '@app/elements/molecules/SubscribeBox';
 import VideoEmbed from '@app/elements/atoms/VideoEmbed';
 import Icon from '@app/elements/atoms/Icon';
+import { RootsType } from '@services/types';
 
-export const Home = () => {
+type HomeProps = {
+  data: RootsType
+}
+
+export const Home = ({ data }: HomeProps) => {
 
   return (
     <GridWrapper className="bg-primary-grey-600 pb-4 md:pb-6 lg:pb-8">
       <div className="col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 text-center">
         <p className='text-paragraph-04 md:text-paragraph-03 text-primary-neutral-200'>@dynamicdevs</p>
-        <h1 className="text-heading-06 md:text-heading-05 lg:text-heading-04 font-bold mt-2 md:mt-4 xl:mt-6 line-clamp-1">Dynamic Devs</h1>
+        <h1 className="text-heading-06 md:text-heading-05 lg:text-heading-04 font-bold mt-2 md:mt-4 xl:mt-6 line-clamp-1">{data?.title}</h1>
         <p className="text-paragraph-04 md:text-paragraph-03 font-bold mt-2 line-clamp-2">
           Consultoría de desarrollo y tecnología 🖥️
           <br></br>
@@ -28,49 +33,41 @@ export const Home = () => {
       <div className="
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
           flex space-x-6 justify-center text-secondary-blue-400 mt-2 md:mt-4 xl:mt-6 py-2">
-            <Icon name="linkedin"  type='outline' />
-            <Icon name="instagram" type='outline' />
-            <Icon name="youtube"  type='outline' />
-            <Icon name="spotify" type='outline' />
-            <Icon name="twitch" type='outline' />
+            {
+              data?.socialMedia?.map((socialMediaItem) => 
+                <Icon 
+                  key={socialMediaItem.id} 
+                  name={socialMediaItem.icon.name}  
+                  type={socialMediaItem.icon.style} 
+                  url={socialMediaItem.url} 
+                />)
+            }
       </div>
       <div className="
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
           flex flex-col space-y-2 md:space-y-4 xl:space-y-6 mt-2 md:mt-4 xl:mt-6">
-        <LinkCard
-          iconName="dynamic"
-          text="La web de Dynamic Devs"
-          url="https://www.dynamicdevs.io/"
-        />
-        <LinkCard
-          iconName="briefcase"
-          text="Trabaja con nosotros"
-          url="https://www.getonbrd.com/companies/dynamic-devs"
-          iconType='outline'
-        />
-        <LinkCard
-          iconName="microphone"
-          text="Escucha lo último del Podcast"
-          url="https://open.spotify.com/show/4fvKHii2mWHkX8mz28klz8?si=d43d25a37ed741c6"
-          iconType='outline'
-        />
-        <LinkCard
-          iconName="speak"
-          text="DevTalks: Charlas de innovación"
-          url="https://www.twitch.tv/dynamicdevs"
-          iconType='outline'
-        />
+            {
+              data?.links?.map((linkItem) => 
+                <LinkCard
+                  key={linkItem.id}
+                  iconName={linkItem?.icon?.name}
+                  iconType={linkItem?.icon?.style}
+                  text={linkItem.title}
+                  url={linkItem.url}
+                />)
+            }
       </div>
       <div className='
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
           mt-4 md:mt-6 lg:mt-8'>
         <div className='py-2'>
           <h2 className="uppercase text-heading-08-case md:text-heading-07-case font-bold">
-            📺 mira el último episodio
+            { data?.video.title}
           </h2>
         </div>
-        <div className='mt-2 lg:mt-4'>
-          <VideoEmbed url="https://www.youtube.com/watch?v=WS9H86DEy7Q" />
+        <div className='mt-2 lg:mt-4'>    
+          {console.log(data?.video.url)}      
+          <VideoEmbed url={data?.video.url ?? '' } />
         </div>
       </div>
       <div className="

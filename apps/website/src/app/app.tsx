@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { client } from '@services/contentfulClient';
-import { LinkTreeType } from '@services/types';
+import { RootsType } from '@services/types';
 import { formatData } from '@utils/util';
 import Layout from '@app/elements/organisms/Layout';
 import { Home } from '@app/page/Home';
 
 export function App() {
 
-  const [items, setItems] = useState<LinkTreeType[]>([]);
+  const [items, setItems] = useState<RootsType[]>([]);
   
   useEffect(() => {
     fetchData();
@@ -16,7 +16,7 @@ export function App() {
   const fetchData = async() => {
     try {
 
-      const response = await client.getEntries({ content_type: 'lt-home'});
+      const response = await client.getEntries({ content_type: 'lt-home', include: 2 });
       const formattedData = formatData(response);
 
       setItems(formattedData);
@@ -27,8 +27,8 @@ export function App() {
   }
 
   return (    
-    <Layout>
-      <Home />
+    <Layout>      
+      <Home data={ items[0] }/>
     </Layout>
   );
 }
