@@ -1,94 +1,136 @@
+<br>
+<div align="center"> 
+<a href="https://symbols.dynamicdevs.io/">
+<img src="https://dynamicdevscommon.blob.core.windows.net/engineering/roots-logo-regular.svg" alt="Roots logo" height="60"/>
+</a>
+</div>
 
+<br>
 
-# DynamicLinks
+<p align="center">
+<a href="https://symbols.dynamicdevs.io/">roots.dynamicdevs.io</a>
+</p>
 
-This project was generated using [Nx](https://nx.dev).
+## About The Project
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+[Roots][roots] is a web application to centralized information and social network links to make them easy to manage. One link for your digital presence designed and developed by [Dynamic Devs][dynamicdevs].
 
-🔎 **Smart, Fast and Extensible Build System**
+## Build With
 
-## Adding capabilities to your workspace
+- [Nx][nx]
+- [React][react]
+- [TypeScript][typescript]
+- [EsLint][eslint]
+- [Tailwind][tailwind]
+- [Symbols][symbols]
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+## Infrastructure
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+- [Azure Front Door][azure-frontdoor]
+- [Azure Content Delivery Network][azure-cdn]
+- [Azure Blob Storage][azure-storage]
 
-Below are our core plugins:
+## Run The Project 
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+1. Clone the project
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+    ```
+    git clone git@github.com:dynamicdevs/roots.git
+    ```
 
-## Generate an application
+2. Navigate to path project
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+    ```
+    cd roots
+    ```
 
-> You can use any of the plugins above to generate applications as well.
+3. Create .env file and add environment variables.
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+    ```
+    NX_ACCESS_TOKEN=<your-contentful-access-token>
+    NX_SPACE_ID=<your-contentful-space-id>
+    NX_ENVIRONMENT=<your-contentful-environment>
+    ```
+4. Install dependencies
 
-## Generate a library
+    ```
+    npm install
+    ```
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+5. Start project
 
-> You can also use any of the plugins above to generate libraries as well.
+    ```
+    npx nx serve website
+    ``` 
 
-Libraries are shareable across libraries and applications. They can be imported from `@dynamic-links/mylib`.
+## Using Relative Paths On Project
 
-## Development server
+It’s recommended to use relative paths for a better project managing. E.g.
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Without alias
 
-## Code scaffolding
+```
+import Icon from '../../elements/atoms/Icon';
+```
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+With alias
 
-## Build
+```
+import Icon from '@app/elements/atoms/Icon';
+```
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The alias is configured within tsconfig.json `website` app
 
-## Running unit tests
+```
+{
+  "baseUrl": ".",
+  "paths": {
+    "@*": ["./src/*"]
+  }
+}
+```
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+## Contributors
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+<br>
 
-## Running end-to-end tests
+<a href="https://github.com/dynamicdevs/roots/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dynamicdevs/roots" />
+</a>
 
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+## Community
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+Join to the conversation and help the community.
 
-## Understand your workspace
+- [Youtube][youtube]
+- [Spotity][spotify]
+- [Twitch][twitch]
 
-Run `nx graph` to see a diagram of the dependencies of your projects.
+## Contact
 
-## Further help
+Dynamic Devs - business@dynamicdevs.io
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+<br>
 
+***
 
+<p align="center">
+<a href="https://ko-fi.com/D1D6C947W">
+<img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Kofi button"/>
+</a>
+</p>
 
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+[dynamicdevs]: https://www.dynamicdevs.io/
+[nx]: https://nx.dev/
+[react]: https://es.reactjs.org/
+[typescript]:https://www.typescriptlang.org/
+[eslint]:https://eslint.org/
+[tailwind]:https://tailwindcss.com/
+[symbols]:https://symbols.dynamicdevs.io/
+[youtube]: https://www.youtube.com/channel/UCD2cpIbELBfK_-9p8PoCGWg
+[spotify]: https://open.spotify.com/show/4fvKHii2mWHkX8mz28klz8?si=d95553238ea04ec4
+[twitch]: https://www.twitch.tv/dynamicdevs
+[azure-frontdoor]: https://azure.microsoft.com/es-es/services/frontdoor/#overview
+[azure-cdn]: https://azure.microsoft.com/es-es/services/cdn/#overview
+[azure-storage]: https://azure.microsoft.com/en-us/services/storage/blobs/#overview
+[roots]:https://roots.dynamicdevs.io/
