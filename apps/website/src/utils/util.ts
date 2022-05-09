@@ -1,21 +1,28 @@
-import { ContentfulItemType, LinkTreeType } from "../services/types"
+import { ContentfulItemType, RootsType } from "../services/types"
 
 export const formatData = (resp: any) => {
-    const linkTreeData: LinkTreeType[] = resp.items.map((item: ContentfulItemType) => {
-        const {title, linkDescription, links, mediaDescription, medias} = item.fields;
+  const linkTreeData: RootsType[] = resp.items.map((item: ContentfulItemType) => {
 
-        const linkList = links.map((linkItem) =>  ({ ...linkItem.fields, id: linkItem.sys.id}));
-        const mediaList = medias.map((mediaItem) => ({...mediaItem.fields, id: mediaItem.sys.id}));
-        
-        return {
-            id: item.sys.id,
-            title: title,
-            linkDescription: linkDescription,            
-            mediaDescription: mediaDescription,
-            links: linkList,
-            medias: mediaList
-        }
-    })
+    const {title, socialMedia, links, video} = item.fields;
 
-    return linkTreeData;
+    const socialMediaList = socialMedia.map((socialMediaItem => {          
+      const icon = socialMediaItem.fields.icon.fields;
+      return { ...socialMediaItem.fields, icon, id: socialMediaItem.sys.id }
+    }));
+
+    const linkList = links.map((linkItem) =>  {
+      const icon = linkItem.fields.icon ? linkItem.fields.icon.fields : undefined;
+      return { ...linkItem.fields, icon, id: linkItem.sys.id }
+    });
+
+    return {
+      id: item.sys.id,
+      title: title,            
+      socialMedia: socialMediaList,
+      links: linkList,
+      video: video.fields
+    }
+  })
+
+  return linkTreeData;
 }
