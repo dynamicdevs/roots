@@ -28,11 +28,11 @@ export const Home = () => {
       <div className="
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
           flex space-x-6 justify-center text-secondary-blue-400 mt-2 md:mt-4 xl:mt-6 py-2">
-            <Icon name="linkedin"  type='outline' />
-            <Icon name="instagram" type='outline' />
-            <Icon name="youtube"  type='outline' />
-            <Icon name="spotify" type='outline' />
-            <Icon name="twitch" type='outline' />
+            <Icon name="linkedin"  type='outline' url="https://www.linkedin.com/company/dynamic-devs/" />
+            <Icon name="instagram" type='outline' url="https://www.instagram.com/dynamicdevs/" />
+            <Icon name="youtube"  type='outline' url="https://www.youtube.com/channel/UCD2cpIbELBfK_-9p8PoCGWg" />
+            <Icon name="spotify" type='outline' url="https://open.spotify.com/show/4fvKHii2mWHkX8mz28klz8?si=8d16ad1538da4899" />
+            <Icon name="twitch" type='outline' url="https://www.twitch.tv/dynamicdevs" />
       </div>
       <div className="
           col-span-4 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4 
