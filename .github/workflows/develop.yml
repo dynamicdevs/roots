@@ -3,13 +3,13 @@ name: Deploy website
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ develop ]
 
 jobs:
   build-and-deploy:
     name: Build and deploy
     runs-on: ubuntu-latest
-    environment: production
+    environment: develop
 
     steps:
     - uses: actions/checkout@v2
@@ -35,4 +35,4 @@ jobs:
       with:
         source-path: dist/apps/website
         sas-url: ${{ secrets.DEPLOY_SAS_URL }}
-        container: roots-prod
+        container: roots-dev
