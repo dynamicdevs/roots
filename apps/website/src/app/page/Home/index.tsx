@@ -31,8 +31,8 @@ export const Home = ({ data }: HomeProps) => {
               data.socialMedia?.map((socialMediaItem) => 
                 <Icon 
                   key={socialMediaItem.id}  
-                  name={socialMediaItem.icon.name}  
-                  type={socialMediaItem.icon.type} 
+                  name={socialMediaItem.icon?.name}  
+                  type={socialMediaItem.icon?.type} 
                   url={socialMediaItem.url} 
                 />)
             }
@@ -79,7 +79,7 @@ export const Home = ({ data }: HomeProps) => {
                   section.cards.map((card) => (
                     <Card
                       key={card.id}
-                      image={{ url: card.image.url, alt: card.image.alt }}
+                      image={{ url: card.image?.url, alt: card.image?.alt }}
                       title={card.title}
                       description={card.description}
                       caption={card.subtitle}
