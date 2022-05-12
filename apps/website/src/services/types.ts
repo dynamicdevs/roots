@@ -1,76 +1,60 @@
+import { IconProps } from "@app/types/icon.props";
+
 export type ContentfulItemType = {
   fields: FieldType;
   sys: SysType;
 }
 
-type FieldType = {
+type Field<T> = {
+  fields: T;
+  sys?: SysType;
+};
+
+type ImageType = {
   title: string;
-  socialMedia: {
-    fields: {
-      title: string;
-      url: string;
-      icon: {
-        fields: IconType
-      }
-    },
-    sys: SysType
-  }[];
-  video: {
-    fields: VideoType
-  };
-  links: {
-    fields: {
-      title: string;
-      url: string;
-      icon?: {
-        fields: IconType
-      }
-    },
-    sys: SysType
-  }[];
+  description: string;
+  file: {
+    url: string;
+  }
+};
 
-}
-
-type IconType = {
-  name: string;
-  style: 'outline' | 'solid';
-}
-
-type LinkItemType = {
-  id: string;
+type MediaType = {
   title: string;
   url: string;
-  icon?: IconType;
-}
+  icon: {
+    fields: IconProps
+  };
+};
 
-type MediaItemType = {
-  id: string;
-  iconName: string;
+type CardType = {
+  description: string;
   subtitle: string;
   title: string;
-  url: string;    
-}
-
-type SocialMediaType = {
-  id: string; 
-  title: string;
   url: string;
-  icon: IconType;
-}
+  image: Field<ImageType>;
+};
+
+type SectionType = {
+  title: string;
+  cards: Field<CardType>[];
+};
 
 type VideoType = {
   title: string;
   url: string;
-}
+};
+
+type FieldType = {
+  title: string;
+  description: string;
+  username: string;
+  image: Field<ImageType>;
+  socialMedia: Field<MediaType>[];
+  video: Field<VideoType>;
+  links: Field<MediaType>[];
+  sections: Field<SectionType>[];
+};
 
 type SysType = {
   id: string;
-}
-
-export type RootsType = {
-  id: string;
-  title: string;
-  links: LinkItemType[];
-  socialMedia: SocialMediaType[];
-  video: VideoType;
-}
+};
