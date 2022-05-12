@@ -3,7 +3,7 @@ import { FC } from "react";
 
 
 type Props = {
-  iconName: string;
+  iconName?: string;
   text: string;
   url: string;
   iconType?: 'solid' | 'outline'; 
