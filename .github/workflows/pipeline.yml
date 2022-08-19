@@ -44,7 +44,7 @@ jobs:
 
   build-web:
     needs: [lint-web]
-    environment: ${{ github.ref_name != 'main' && 'develop' || 'prod' }}
+    environment: ${{ github.ref_name != 'main' && 'develop' || 'production' }}
     runs-on: ubuntu-18.04
     steps:
       - name: Symbol - Checkout
@@ -69,7 +69,7 @@ jobs:
   deploy-web:
     needs: [build-web, lint-web]
     runs-on: ubuntu-18.04
-    environment: ${{ github.ref_name != 'main' && 'develop' || 'prod' }}
+    environment: ${{ github.ref_name != 'main' && 'develop' || 'production' }}
     if: ${{ github.event_name == 'push' }}
     steps:
       - name: Download build files
