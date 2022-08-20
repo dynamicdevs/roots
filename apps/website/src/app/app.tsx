@@ -4,9 +4,13 @@ import { formatData } from '@utils/util';
 import Layout from '@app/elements/organisms/Layout';
 import { Home } from '@app/page/Home';
 import { RootsProps } from './types/roots.props';
+import { LoadingPage } from './page/Loading';
+import { NoData } from './page/NoData';
 
 export function App() {
   const [item, setItem] = useState<RootsProps>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [noData, setNoData] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
@@ -18,23 +22,32 @@ export function App() {
         content_type: 'lt-home',
         include: 2,
       });
+
       const formattedData = formatData(response);
 
+      if (!formattedData[0].username) {
+        setNoData(true);
+        return;
+      }
+
       setItem(formattedData[0]);
-      
     } catch (error) {
-      console.error(error);
+      setNoData(true);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
-      {item ? (
+      {loading ? (
+        <LoadingPage />
+      ) : noData && item ? (
         <Layout image={item.image}>
           <Home data={item} />
         </Layout>
       ) : (
-        <div>Cargando</div>
+        <NoData />
       )}
     </div>
   );
