@@ -44,7 +44,7 @@ jobs:
 
   build-web:
     needs: [setup]
-    environment: develop
+    environment: ${{ github.ref_name != 'main' && 'develop' || 'production' }}
     runs-on: ubuntu-20.04
     steps:
       - name: Symbol - Checkout
