@@ -1,10 +1,18 @@
 import { RootsProps } from "@app/types/roots.props";
-import { ContentfulItemType } from "@services/types";
+import { ContentfulDataType } from '@services/types';
 
-export const formatData = (resp: any) => {
-  const linkTreeData: RootsProps[] = resp.items.map((item: ContentfulItemType) => {
-
-    const { title, description, username, image, socialMedia, links, video, sections } = item.fields;
+export const formatData = (resp: ContentfulDataType) => {
+  const rootsData: RootsProps[] = resp.items.map((item) => {
+    const {
+      title,
+      description,
+      username,
+      image,
+      socialMedia,
+      links,
+      video,
+      sections,
+    } = item.fields;
 
     const socialMediaList = socialMedia?.map((socialMediaItem) => {
       const icon = socialMediaItem.fields.icon.fields;
@@ -15,7 +23,7 @@ export const formatData = (resp: any) => {
       const icon = linkItem.fields.icon
         ? linkItem.fields.icon.fields
         : undefined;
-      return { ...linkItem.fields, icon, id: linkItem.sys?.id };
+      return { ...linkItem.fields, icon, id: linkItem.sys.id };
     });
 
     const sectionList = sections?.map((section) => {
@@ -24,7 +32,7 @@ export const formatData = (resp: any) => {
         return {
           ...card.fields,
           image: { alt: image.description, url: image.file.url },
-          id: card.sys?.id,
+          id: card.sys.id,
         };
       });
       return { title: section.fields.title, cards };
@@ -34,14 +42,14 @@ export const formatData = (resp: any) => {
       id: item.sys.id,
       title,
       description,
-      image: { alt: image.fields?.description, url: image?.fields?.file.url },
+      image: { alt: image.fields?.description, url: image.fields?.file.url },
       username,
       socialMedia: socialMediaList,
       links: linkList,
       video: video.fields,
       sections: sectionList,
     };
-  })
+  });
 
-  return linkTreeData;
-}
+  return rootsData;
+};

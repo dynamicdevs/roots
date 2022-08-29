@@ -6,11 +6,11 @@ import { Home } from '@app/page/Home';
 import { RootsProps } from './types/roots.props';
 import { LoadingPage } from './page/Loading';
 import { NoData } from './page/NoData';
+import { ContentfulDataType } from '@services/types';
 
 export function App() {
-  const [item, setItem] = useState<RootsProps>();
+  const [data, setData] = useState<RootsProps | null>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [noData, setNoData] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
@@ -18,21 +18,20 @@ export function App() {
 
   const fetchData = async () => {
     try {
-      const response = await client.getEntries({
+      const response: ContentfulDataType = await client.getEntries({
         content_type: 'lt-home',
         include: 2,
       });
 
-      const formattedData = formatData(response);
-
-      if (!formattedData[0].username) {
-        setNoData(true);
+      if (!response.total) {
+        setData(null);
         return;
       }
 
-      setItem(formattedData[0]);
+      const formattedData = formatData(response);
+      setData(formattedData[0]);
     } catch (error) {
-      setNoData(true);
+      setData(null);
     } finally {
       setLoading(false);
     }
@@ -40,11 +39,10 @@ export function App() {
 
   return (
     <div>
-      {loading ? (
-        <LoadingPage />
-      ) : noData && item ? (
-        <Layout image={item.image}>
-          <Home data={item} />
+      {loading && <LoadingPage />}
+      {data ? (
+        <Layout image={data.image}>
+          <Home data={data} />
         </Layout>
       ) : (
         <NoData />
