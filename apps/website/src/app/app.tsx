@@ -4,9 +4,13 @@ import { formatData } from '@utils/util';
 import Layout from '@app/elements/organisms/Layout';
 import { Home } from '@app/page/Home';
 import { RootsProps } from './types/roots.props';
+import { LoadingPage } from './page/Loading';
+import { NoData } from './page/NoData';
+import { ContentfulDataType } from '@services/types';
 
 export function App() {
-  const [item, setItem] = useState<RootsProps>();
+  const [data, setData] = useState<RootsProps | null>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetchData();
@@ -14,27 +18,34 @@ export function App() {
 
   const fetchData = async () => {
     try {
-      const response = await client.getEntries({
+      const response: ContentfulDataType = await client.getEntries({
         content_type: 'lt-home',
         include: 2,
       });
-      const formattedData = formatData(response);
 
-      setItem(formattedData[0]);
-      
+      if (!response.total) {
+        setData(null);
+        return;
+      }
+
+      const formattedData = formatData(response);
+      setData(formattedData[0]);
     } catch (error) {
-      console.error(error);
+      setData(null);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
-      {item ? (
-        <Layout image={item.image}>
-          <Home data={item} />
+      {loading && <LoadingPage />}
+      {data ? (
+        <Layout image={data.image}>
+          <Home data={data} />
         </Layout>
       ) : (
-        <div>Cargando</div>
+        <NoData />
       )}
     </div>
   );

@@ -1,0 +1,7 @@
+.loader {
+  @apply w-12 h-12 rounded-full inline-block relative bg-roots-pattern animate-loader-rotation;
+
+  &::after {
+    @apply content-[''] box-border absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary-grey-600;
+  }
+}

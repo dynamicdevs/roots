@@ -1,13 +1,18 @@
 import { IconProps } from "@app/types/icon.props";
 
-export type ContentfulItemType = {
+export type ContentfulDataType = {
+  items: ContentfulItemType[];
+  total: number;
+};
+
+type ContentfulItemType = {
   fields: FieldType;
   sys: SysType;
-}
+};
 
 type Field<T> = {
   fields: T;
-  sys?: SysType;
+  sys: SysType;
 };
 
 type ImageType = {
@@ -15,14 +20,14 @@ type ImageType = {
   description: string;
   file: {
     url: string;
-  }
+  };
 };
 
 type MediaType = {
   title: string;
   url: string;
   icon: {
-    fields: IconProps
+    fields: IconProps;
   };
 };
 

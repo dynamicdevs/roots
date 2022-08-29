@@ -1,41 +1,55 @@
 import { RootsProps } from "@app/types/roots.props";
-import { ContentfulItemType } from "@services/types";
+import { ContentfulDataType } from '@services/types';
 
-export const formatData = (resp: any) => {
-  const linkTreeData: RootsProps[] = resp.items.map((item: ContentfulItemType) => {
+export const formatData = (resp: ContentfulDataType) => {
+  const rootsData: RootsProps[] = resp.items.map((item) => {
+    const {
+      title,
+      description,
+      username,
+      image,
+      socialMedia,
+      links,
+      video,
+      sections,
+    } = item.fields;
 
-    const { title, description, username, image, socialMedia, links, video, sections } = item.fields;
-
-    const socialMediaList = socialMedia.map((socialMediaItem => {          
+    const socialMediaList = socialMedia?.map((socialMediaItem) => {
       const icon = socialMediaItem.fields.icon.fields;
-      return { ...socialMediaItem.fields, icon, id: socialMediaItem.sys?.id }
-    }));
-
-    const linkList = links.map((linkItem) =>  {
-      const icon = linkItem.fields.icon ? linkItem.fields.icon.fields : undefined;
-      return { ...linkItem.fields, icon, id: linkItem.sys?.id }
+      return { ...socialMediaItem.fields, icon, id: socialMediaItem.sys?.id };
     });
 
-    const sectionList = sections.map((section) => {
-      const cards = section.fields.cards.map((card) => {        
+    const linkList = links?.map((linkItem) => {
+      const icon = linkItem.fields.icon
+        ? linkItem.fields.icon.fields
+        : undefined;
+      return { ...linkItem.fields, icon, id: linkItem.sys.id };
+    });
+
+    const sectionList = sections?.map((section) => {
+      const cards = section.fields.cards.map((card) => {
         const image = card.fields.image.fields;
-        return { ...card.fields, image: { alt: image.description, url: image.file.url }, id: card.sys?.id };
-      });      
+        return {
+          ...card.fields,
+          image: { alt: image.description, url: image.file.url },
+          id: card.sys.id,
+        };
+      });
       return { title: section.fields.title, cards };
     });
 
     return {
       id: item.sys.id,
-      title,           
+      title,
       description,
-      image: { alt: image.fields.description, url: image.fields.file.url }, 
+      image: { alt: image.fields?.description, url: image.fields?.file.url },
       username,
       socialMedia: socialMediaList,
       links: linkList,
       video: video.fields,
       sections: sectionList,
-    }
-  })
+    };
+  });
 
-  return linkTreeData;
-}
+  return rootsData;
+};
