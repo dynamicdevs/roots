@@ -9,14 +9,14 @@ on:
 
 jobs:
   reduncy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Cancel Previous Redundant Builds
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
   setup:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Roots - Checkout
         uses: actions/checkout@v3
@@ -31,7 +31,7 @@ jobs:
 
   lint-web:
     needs: [setup]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Symbol - Checkout
         uses: actions/checkout@v2
@@ -43,9 +43,9 @@ jobs:
         run: npx nx lint website
 
   build-web:
-    needs: [lint-web]
+    needs: [setup]
     environment: ${{ github.ref_name != 'main' && 'develop' || 'production' }}
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Symbol - Checkout
         uses: actions/checkout@v2
@@ -68,7 +68,7 @@ jobs:
 
   deploy-web:
     needs: [build-web, lint-web]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     environment: ${{ github.ref_name != 'main' && 'develop' || 'production' }}
     if: ${{ github.event_name == 'push' }}
     steps:
